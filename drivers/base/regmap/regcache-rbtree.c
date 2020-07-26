@@ -22,6 +22,8 @@ static int regcache_rbtree_write(struct regmap *map, unsigned int reg,
 				 unsigned int value);
 static int regcache_rbtree_exit(struct regmap *map);
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic warning "-Wpacked-not-aligned"
 struct regcache_rbtree_node {
 	/* block of adjacent registers */
 	void *block;
@@ -34,6 +36,7 @@ struct regcache_rbtree_node {
 	/* the actual rbtree node holding this block */
 	struct rb_node node;
 } __attribute__ ((packed));
+#pragma GCC diagnostic pop
 
 struct regcache_rbtree_ctx {
 	struct rb_root root;
