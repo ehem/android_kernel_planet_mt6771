@@ -56,6 +56,9 @@
 #include <linux/types.h>
 #include <linux/socket.h>
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic warning "-Wpacked-not-aligned"
+
 typedef __s32 sctp_assoc_t;
 
 /* The following symbols come from the Sockets API Extensions for
@@ -901,5 +904,7 @@ struct sctp_paddrthlds {
 	__u16 spt_pathmaxrxt;
 	__u16 spt_pathpfthld;
 };
+
+#pragma GCC diagnostic pop
 
 #endif /* _UAPI_SCTP_H */
